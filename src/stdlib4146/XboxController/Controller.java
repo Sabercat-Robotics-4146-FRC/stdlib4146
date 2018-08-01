@@ -1,4 +1,4 @@
-package stdlib4146;
+package stdlib4146.XboxController;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.Joystick;
@@ -57,6 +57,16 @@ public class Controller {
 		joy = new Joystick(number);
 	}
 	
+	/**
+	 * Returns whether the raw button is being pushed on the controller.
+	 * 
+	 * @param int button id
+	 * @return a boolean value of whether the raw button is pressed
+	 */
+	public boolean getRawButton(int button) {
+		return joy.getRawButton(button);
+	}
+
 	/**
 	 * Returns whether the "A" button is being pushed on the controller.
 	 * 
