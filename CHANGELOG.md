@@ -1,5 +1,10 @@
 # stdlib4146 Changelog
 
+## 0.0.2
+Author JacobE
+### Changes
+% Changed some eclipse metadata in the project so that it will search for the required WPILib
+  libraries in the current users home folder instead of a specific users.
 
 ## 0.0.1
 Author GowanR
