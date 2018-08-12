@@ -1,0 +1,5 @@
+#ignoreing .classpath to make it so people's library references aren't messed up when they pull.
+.classpath
+
+#ignoring bin directory
+bin/

@@ -10,7 +10,7 @@ package stdlib4146.MotionControllers;
 * @author GowanR
 * @version 0.0.0
 */
-public abstract class PID {
+public abstract class BasePID {
   // Constants
 	protected double Kp;
 	protected double Ki;
@@ -37,7 +37,7 @@ public abstract class PID {
   protected int nIterationsInTolerance;
 
 
-	public PID( double sampleRate, double errorTolerance ){
+	public BasePID( double sampleRate, double errorTolerance ){
 		setpoint = 0;
 	    integral = 0;
 	    nIterationsInTolerance = 0;

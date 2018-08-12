@@ -1,4 +1,4 @@
-package stdlib4146;
+package stdlib4146.XboxController;
 import java.util.ArrayList;
 /**
  * The ControllerBinder class simplifies the controller syntax for handling user input.
@@ -16,14 +16,16 @@ public class ControllerBinder {
         this.xboxController = xboxController;
         callbackList = new ArrayList<BoundCallback>();
     }
-    public bind(int button, ButtonCallback callback) {
+    
+    public void bind(int button, ButtonCallback callback) {
         callbackList.add(new BoundCallback(button, callback));
     }
-    public update(double dt) {
+    
+    public void update(double dt) {
         for (BoundCallback bc : callbackList) {
             if (xboxController.getRawButton(bc.button)) {
                 bc.pressed = true;
-                bc.callback.onPress(holdtime);
+                bc.callback.onPress(bc.holdtime);
                 bc.holdtime += dt;
                 bc.releaseRan = false;
             } 
@@ -43,12 +45,13 @@ public class ControllerBinder {
         public double holdtime;
         public boolean pressed;
         public boolean releaseRan;
-        public BoundCallback(int button, ButtonCallback callback) {
+        
+        public BoundCallback(int button, ButtonCallback callback) { 
             this.button = button;
             this.callback = callback;
             this.holdtime = 0;
             this.pressed = false;
-            this.releaseRan = true;
+            this.releaseRan = true; // Refers to whether the onRelease method has run.
         }
     }
 }

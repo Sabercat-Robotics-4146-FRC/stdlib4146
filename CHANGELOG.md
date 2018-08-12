@@ -1,10 +1,24 @@
 # stdlib4146 Changelog
 
+## 0.0.3
+Author JacobE
+### Changes
++ .gitignore ignoring .classpath and the bin directory
++ Timer Class
++ Wait Utilities added to Utils class
+% Fixed some minor issues in XboxController related classes.
+% Fixed some minor issues in Logger class.
+% Fixed some minor issues in BasePID class.
+- Reverted the eclipse metadata back from last update.
+- Removed Herobrine
+
+
 ## 0.0.2
 Author JacobE
 ### Changes
 % Changed some eclipse metadata in the project so that it will search for the required WPILib
   libraries in the current users home folder instead of a specific users.
+
 
 ## 0.0.1
 Author GowanR

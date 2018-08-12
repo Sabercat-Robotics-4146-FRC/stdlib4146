@@ -1,9 +1,10 @@
 package stdlib4146.Misc;
 /**
- *  This is where all static methods that are for generic math use go.
+ *  This is where all static methods that are for generic use go.
  *
  *  @author GowanR
- *  @version 0.0.0
+ *  @author JacobE
+ *  @version 0.0.1
  */
 
 
@@ -16,4 +17,22 @@ public class Utils {
 		}
 		return valueToClamp;
     }
+    
+    public static void waitTime() {
+		try {
+			Thread.sleep(1); // time in milliseconds
+		} catch (InterruptedException e) {
+			System.out.println("Thread.sleep was Interrupted in waitTime1!");
+			e.printStackTrace();
+		}
+	}
+	
+	public static void waitTime(int i) {
+		try {
+			Thread.sleep(i); // time in milliseconds
+		} catch (InterruptedException e) {
+			System.out.println("Thread.sleep was Interrupted in waitTime2!");
+			e.printStackTrace();
+		}
+	}
 }

@@ -1,5 +1,5 @@
 package stdlib4146.Logging;
-import java.utils.ArrayList;
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
  *  Can write to a file or print.
  *
  *  @author GowanR
- *  @version 0.0.0
+ *  @version 0.0.1
  */
 
 
@@ -23,18 +23,18 @@ import java.io.FileOutputStream;
  // \/      DEBUG,    Use when you're just debugging the Robot.
 
 
-public calss Logger {
-    public static double UPDATE_RATE = 1; //Htz, once per secont
-    public static ArrayList<String> LOG_STACK = new ArrayList<String>();
+public class Logger {
+    public static final double UPDATE_RATE = 1; //Htz, once per second
+    public static ArrayList<String> LOG_QUEUE = new ArrayList<String>();
     public static double DT_ACC = 0;
     public static FileOutputStream OUTPUT_STREAM;
-    public static String FILE_NAME = ""; // Change this to write to a file.
+    public static final String FILE_NAME = ""; // Change this to write to a file.
 
     static String timestamp() {
         return (String)(new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
     }
-    staic void log(String level, String message) {
-        LOG_STACK.add("[" + level + "] " + message + " [" + timestamp() + "]");
+    static void log(String level, String message) {
+    	LOG_QUEUE.add("[" + level + "] " + message + " [" + timestamp() + "]");
     }
     static void debug(String message) {
         log("DEBUG", message);
@@ -51,13 +51,14 @@ public calss Logger {
     static void fatal(String message) {
         log("FATAL", message);
     }
-    static void update(double dt) throws IOException { // Run this in the main operation loop.
+    @SuppressWarnings("unused") // eclipse calls the file printing dead code if name is blank and underlines are annoying.
+	static void update(double dt) throws IOException { // Run this in the main operation loop.
         if (FILE_NAME != "" && OUTPUT_STREAM == null) {
-           OUTPUT_STREAM = new FileOutputStream(fileName);
+           OUTPUT_STREAM = new FileOutputStream(FILE_NAME);
         }
         DT_ACC += dt;
         if (DT_ACC >= (1/UPDATE_RATE)) {
-            for (String message : LOG_STACK) {
+            for (String message : LOG_QUEUE) {
                 System.out.println(message);
                 if (FILE_NAME != "") {
                     message += "\n";
@@ -65,7 +66,7 @@ public calss Logger {
                 } 
             }
             DT_ACC = 0;
-            LOG_STACK.removeAll();
+            LOG_QUEUE.clear();
         }
     }
     static void closeFile() throws IOException {

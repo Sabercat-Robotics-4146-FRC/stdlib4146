@@ -1,4 +1,4 @@
-package stdlib4146;
+package stdlib4146.XboxController;
 
 /**
  * The ButtonCallback interface is used for streamlining button callbacks with the ControllerBinder.
